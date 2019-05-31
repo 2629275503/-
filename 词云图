@@ -1,0 +1,16 @@
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt #绘制图像的模块
+import jieba #jieba分词
+
+file = open("weibo.txt",'r',encoding='UTF-8')
+f=file.read()
+text = " ".join(jieba.cut(f))
+wc = WordCloud(font_path="C:/Windows/Fonts/simfang.ttf",
+                      background_color="white",
+                      width=1000,height=880,
+                      max_words=50,
+                      max_font_size=140,min_font_size=8).generate(text)
+wc.to_file('jielun.png')
+plt.imshow(wc, interpolation="bilinear")
+plt.axis("off")
+plt.show()
